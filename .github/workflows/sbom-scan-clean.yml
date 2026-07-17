@@ -1,0 +1,31 @@
+name: sbom-scan-clean
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  generate-scan-clean:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Syft
+        id: syft
+        uses: anchore/sbom-action/download-syft@v0
+
+      - name: Generate CycloneDX SBOM from clean app folder
+        run: ${{ steps.syft.outputs.cmd }} dir:app-clean -o cyclonedx-json=sbom-clean.cdx.json
+
+      - name: Install Grype
+        id: grype
+        uses: anchore/scan-action/download-grype@v6
+
+      - name: Scan clean SBOM with Grype
+        run: ${{ steps.grype.outputs.cmd }} sbom:sbom-clean.cdx.json --fail-on high

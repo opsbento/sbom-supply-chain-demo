@@ -1,0 +1,13 @@
+{
+  "name": "transaction-summary-app-clean",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Self-contained Node.js app for clean SBOM scanning",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "nanoid": "5.0.9"
+  }
+}

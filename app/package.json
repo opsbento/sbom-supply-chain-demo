@@ -1,0 +1,17 @@
+{
+  "name": "transaction-summary-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Small Node.js app for the SBOM supply chain demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "colors": "1.4.1",
+    "conducts": "^1.0.0",
+    "lodash": "4.17.10",
+    "minimist": "0.0.8",
+    "nanoid": "5.0.8"
+  }
+}
